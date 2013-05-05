@@ -1,173 +1,177 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Nixie Clock</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			body {padding: 0; margin: 0; font-family: Arial, sans-serif; font-size: 0.75em; color: #000;}
-			h2 {font-weight: normal; font-size: 2em;}
+    <head>
+        <title>Nixie Clock</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {padding: 0; margin: 0; font-family: Arial, sans-serif; font-size: 0.75em; color: #000;}
+            h2 {font-weight: normal; font-size: 2em;}
             h3 {font-weight: normal; color: #eee; font-size: 1.8em; margin-bottom: 5px; margin-top: 0;}
-			img {border: 0;}
-			.nche {
-			    width: 100%;
-			    background-color: #000;
-			    text-align: center;
-			    vertical-align: middle;
-			    min-height: 140px;
-			}
-			
-			.container {padding: 7px 5%;}
-			.wraper {display: table;}
-			.art-content {display: table-cell; vertical-align: middle;}
-			.art-img {display: table-cell; vertical-align: middle;}
-			.num {white-space: nowrap;}
-			
-			.nav a:active, .nav a:visited, .nav a:link {color: #979797; text-decoration: none; border-bottom: 1px dashed #979797; font-size: 1.4em;}
-			.nav a:hover {color: #b7b7b7;}
-			.tog_rc {cursor: pointer;}
-			.dl_butt {
-			    display: inline-block;
-			    text-decoration: none;
-			    width: 300px;
-			    background: url('images/ard_b.png') repeat-x;
-			    border-radius: 9px;
-			    vertical-align: middle;
-			    padding: 10px;
-			    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0 rgba(0,0,0,0.5) inset, 0 0 10px rgba(0,90,0,0.5);
-			}
-			.dl_butt.blue {
-			    background: url('images/win_b.png') repeat-x;
-			    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0 rgba(0,0,0,0.5) inset, 0 0 10px rgba(0,0,90,0.5);
-			}
-			.dl_butt img {display: inline-block; vertical-align: middle;}
-			.dl_butt div {display: inline-block; vertical-align: middle; padding-left: 5px;}
-			.dl_butt i {color: #555;}
-			.bt-wrap {
-			    display: inline-block; vertical-align: middle; margin: 5px 10px
-			}
-			
-			.footer {
-			    background-color: #F5F5F5;
+            img {border: 0;}
+            .nche {
+                width: 100%;
+                background-color: #000;
+                text-align: center;
+                vertical-align: middle;
+                min-height: 140px;
+            }
+            
+            .container {
+                width: 90%;
+                margin: 7px auto;
+                max-width: 1300px;
+            }
+            .wraper {display: table;}
+            .art-content {display: table-cell; vertical-align: middle;}
+            .art-img {display: table-cell; vertical-align: middle;}
+            .num {white-space: nowrap;}
+            
+            .nav a:active, .nav a:visited, .nav a:link {color: #979797; text-decoration: none; border-bottom: 1px dashed #979797; font-size: 1.4em;}
+            .nav a:hover {color: #b7b7b7;}
+            .tog_rc {cursor: pointer;}
+            .dl_butt {
+                display: inline-block;
+                text-decoration: none;
+                width: 300px;
+                background: url('images/ard_b.png') repeat-x;
+                border-radius: 9px;
+                vertical-align: middle;
+                padding: 10px;
+                box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0 rgba(0,0,0,0.5) inset, 0 0 10px rgba(0,90,0,0.5);
+            }
+            .dl_butt.blue {
+                background: url('images/win_b.png') repeat-x;
+                box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0 rgba(0,0,0,0.5) inset, 0 0 10px rgba(0,0,90,0.5);
+            }
+            .dl_butt img {display: inline-block; vertical-align: middle;}
+            .dl_butt div {display: inline-block; vertical-align: middle; padding-left: 5px;}
+            .dl_butt i {color: #555;}
+            .bt-wrap {
+                display: inline-block; vertical-align: middle; margin: 5px 10px
+            }
+            
+            .footer {
+                background-color: #F5F5F5;
                 border-top: 1px solid #E5E5E5;
                 margin-top: 30px;
                 padding: 30px 5%;
-			}
-			.foo-text {display: inline-block; padding-left: 10px; mim-width: 450px; vertical-align: middle;}
-			.foo-text p {margin: 0; padding: 0; white-space: normal;}
-			.foo-img {display: inline-block; vertical-align: middle;}
-			
-			@media (max-width: 850px) {
-			    #img-t {display: none;}
-			    #cont_t {display: none;}
-			}
-			@media (max-width: 710px) {
-			    .art-img {display: none;}
+            }
+            .foo-text {display: inline-block; padding-left: 10px; mim-width: 450px; vertical-align: middle;}
+            .foo-text p {margin: 0; padding: 0; white-space: normal;}
+            .foo-img {display: inline-block; vertical-align: middle;}
+            
+            @media (max-width: 850px) {
+                #img-t {display: none;}
+                #cont_t {display: none;}
+            }
+            @media (max-width: 710px) {
+                .art-img {display: none;}
                 .art-content {display: block;}
-			    .num-o {display: block;}
-			    .sep-o {display: none;}
-			}
-			@media (max-width: 470px) {
-			    .num-s {display: block;}
+                .num-o {display: block;}
+                .sep-o {display: none;}
+            }
+            @media (max-width: 470px) {
+                .num-s {display: block;}
                 .sep-s {display: none;}
             }
-		</style>
-		<script type="text/javascript" src="http://yandex.st/jquery/1.8.1/jquery.min.js"></script>
-		<script type="text/javascript" src="//nim579.ru/js/trurl.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(".light").live('click', function(){
-					var src = $(this).attr('src');
-					$(this).removeAttr('width');
-					var w = $(this).width();
-					var h = $(this).height();
-					w = w/2+7
-					h = h/2+7
-					$(this).attr({'width': '80'})
-					$('body').append('<div class="blyte" style="background-color: #000; opacity: 0.8; top: 0; left: 0; position: fixed; width: 100%; height: 100%; z-index: 99;"></div><div style="position: fixed; top: 50%; left: 50%; width: 0; height: 0; z-index: 100;" class="lyte"><img src="'+src+'" style="top: -'+h+'px; left: -'+w+'px; position: absolute; z-index: 1000; border: 7px solid #fff; border-radius: 7px;" alt=""></div>');
-				});
-				$(".blyte, .lyte").live('click', function(){
-					$('.blyte').remove();
-					$('.lyte').remove();
-				});
-			});
-		</script>
-		<script type="text/javascript">
-			$(function() {
-				var today = new Date();
-				var che = 3600 * today.getHours() + 60 * today.getMinutes() + today.getSeconds();
+        </style>
+        <script type="text/javascript" src="http://yandex.st/jquery/1.8.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//nim579.ru/js/trurl.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".light").live('click', function(){
+                    var src = $(this).attr('src');
+                    $(this).removeAttr('width');
+                    var w = $(this).width();
+                    var h = $(this).height();
+                    w = w/2+7
+                    h = h/2+7
+                    $(this).attr({'width': '80'})
+                    $('body').append('<div class="blyte" style="background-color: #000; opacity: 0.8; top: 0; left: 0; position: fixed; width: 100%; height: 100%; z-index: 99;"></div><div style="position: fixed; top: 50%; left: 50%; width: 0; height: 0; z-index: 100;" class="lyte"><img src="'+src+'" style="top: -'+h+'px; left: -'+w+'px; position: absolute; z-index: 1000; border: 7px solid #fff; border-radius: 7px;" alt=""></div>');
+                });
+                $(".blyte, .lyte").live('click', function(){
+                    $('.blyte').remove();
+                    $('.lyte').remove();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                var today = new Date();
+                var che = 3600 * today.getHours() + 60 * today.getMinutes() + today.getSeconds();
                 var i = che;
-				setInterval(function(){
-					che %= 86400;
+                setInterval(function(){
+                    che %= 86400;
 
-					var hou = Math.floor(che / 3600)
-					var min = Math.floor((che - hou * 3600) / 60)
-					var sec = Math.floor(che - hou * 3600 - min * 60)
-					
-					h1 = Math.floor(hou / 10)
-					h2 = hou - h1 * 10
-					m1 = Math.floor(min / 10)
-					m2 = min - m1 * 10
-					s1 = Math.floor(sec / 10)
-					s2 = sec - s1 * 10
-					$('img.h1').attr("src", "//nim579.ru/images/num/" + h1 + "s.jpg");
-					$('img.h2').attr("src", "//nim579.ru/images/num/" + h2 + "s.jpg");
-					$('img.m1').attr("src", "//nim579.ru/images/num/" + m1 + "s.jpg");
-					$('img.m2').attr("src", "//nim579.ru/images/num/" + m2 + "s.jpg");
-					$('img.s1').attr("src", "//nim579.ru/images/num/" + s1 + "s.jpg");
-					$('img.s2').attr("src", "//nim579.ru/images/num/" + s2 + "s.jpg");
-					if(che%300 == 0){
-					    var upd = new Date();
+                    var hou = Math.floor(che / 3600)
+                    var min = Math.floor((che - hou * 3600) / 60)
+                    var sec = Math.floor(che - hou * 3600 - min * 60)
+                    
+                    h1 = Math.floor(hou / 10)
+                    h2 = hou - h1 * 10
+                    m1 = Math.floor(min / 10)
+                    m2 = min - m1 * 10
+                    s1 = Math.floor(sec / 10)
+                    s2 = sec - s1 * 10
+                    $('img.h1').attr("src", "//nim579.ru/images/num/" + h1 + "s.jpg");
+                    $('img.h2').attr("src", "//nim579.ru/images/num/" + h2 + "s.jpg");
+                    $('img.m1').attr("src", "//nim579.ru/images/num/" + m1 + "s.jpg");
+                    $('img.m2').attr("src", "//nim579.ru/images/num/" + m2 + "s.jpg");
+                    $('img.s1').attr("src", "//nim579.ru/images/num/" + s1 + "s.jpg");
+                    $('img.s2').attr("src", "//nim579.ru/images/num/" + s2 + "s.jpg");
+                    if(che%300 == 0){
+                        var upd = new Date();
                         che = 3600 * upd.getHours(); + 60 * upd.getMinutes(); + upd.getSeconds() + 1;
-					} else {
-					    che++;
-					}
-				}, 1000);
-			});
+                    } else {
+                        che++;
+                    }
+                }, 1000);
+            });
 
-		</script>
-	</head>
-	<body>
-		<div style="" class="nche">
-		    <span class="num  num-t">
-			    <img src="//nim579.ru/images/num/0s.jpg" class="h1" width="100" alt="">
-			    <img src="//nim579.ru/images/num/0s.jpg" class="h2" width="100" alt="">
-			</span>
-			<img class="sep-s" src="//nim579.ru/images/num/ds.jpg" width="33" alt="">
-			<span class="num num-s">
-    			<img src="//nim579.ru/images/num/0s.jpg" class="m1" width="100" alt="">
-    			<img src="//nim579.ru/images/num/0s.jpg" class="m2" width="100" alt="">
-			</span>
-			<img class="sep-o" src="//nim579.ru/images/num/ds.jpg" width="33" alt="">
-			<span class="num num-o">
-    			<img src="//nim579.ru/images/num/0s.jpg" class="s1" width="100" alt="">
-    			<img src="//nim579.ru/images/num/0s.jpg" class="s2" width="100" alt="">
-			</span>
-		</div>
+        </script>
+    </head>
+    <body>
+        <div style="" class="nche">
+            <span class="num  num-t">
+                <img src="//nim579.ru/images/num/0s.jpg" class="h1" width="100" alt="">
+                <img src="//nim579.ru/images/num/0s.jpg" class="h2" width="100" alt="">
+            </span>
+            <img class="sep-s" src="//nim579.ru/images/num/ds.jpg" width="33" alt="">
+            <span class="num num-s">
+                <img src="//nim579.ru/images/num/0s.jpg" class="m1" width="100" alt="">
+                <img src="//nim579.ru/images/num/0s.jpg" class="m2" width="100" alt="">
+            </span>
+            <img class="sep-o" src="//nim579.ru/images/num/ds.jpg" width="33" alt="">
+            <span class="num num-o">
+                <img src="//nim579.ru/images/num/0s.jpg" class="s1" width="100" alt="">
+                <img src="//nim579.ru/images/num/0s.jpg" class="s2" width="100" alt="">
+            </span>
+        </div>
         <div style="padding: 5px; display: table;">
             <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
             <div style="float: left;" class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter"></div><div style="float: left; padding: 6px 3px;"><g:plusone size="small"></g:plusone></div>
         </div>
-		<!-- nav>
-			<div style="width: 100%; text-align: center;" class="nav">
-				<span style="padding-right: 10px;"><a href="#main">Описание</a></span>
-				<span style="padding-right: 10px;"><a href="#android">Andoid</a></span>
-				<span style="padding-right: 10px;"><a href="#win">Windows</a></span>
-			</div>
-		</nav -->
-		<article>
-			<div class="container">
-				<article id="main">
-					<div class="wraper">
-    					<div class="art-content" style="">
-        					<header><h2>Что это?</h2></header>
-        					<p>Nixie Clock&nbsp;&mdash; мультиплатформенное приложение, отображающее часы в&nbsp;виде <a href="http://ru.wikipedia.org/wiki/%C3%E0%E7%EE%F0%E0%E7%F0%FF%E4%ED%FB%E9_%E8%ED%E4%E8%EA%E0%F2%EE%F0">газоразрядных индикаторов</a>.</p>
-        					<p>Разработку приложения ведут 2&nbsp;программиста&nbsp;&mdash; Иванушкин Николай (Nim579) и&nbsp;Алексей Елин. Каждый разработчик отвечает за&nbsp;определенную платформу и&nbsp;использует свой собственный алгоритм счета времени.<br>
-        						Исторически сложилось, что было придумано 2&nbsp;разных алгоритма, и&nbsp;до&nbsp;сих пор идут споры о&nbsp;том какой из&nbsp;них лучше.
-        					</p>
-        					<p>Изначально, идея появилась у&nbsp;Алексея, далее к&nbsp;проекту присоединился Николай, который обработал изображения газоразрядных индикаторов Nixie Z560M.</p>
-        					<p>История появления идеи:</p>
-        					<p style="padding: 5px; font-size: 1.1em; color: #555;"><i>«Изначальная идея была проста&nbsp;&mdash; создать часы, показывающие время в&nbsp;любой системе счисления﻿.
+        <!-- nav>
+            <div style="width: 100%; text-align: center;" class="nav">
+                <span style="padding-right: 10px;"><a href="#main">Описание</a></span>
+                <span style="padding-right: 10px;"><a href="#android">Andoid</a></span>
+                <span style="padding-right: 10px;"><a href="#win">Windows</a></span>
+            </div>
+        </nav -->
+        <article>
+            <div class="container">
+                <article id="main">
+                    <div class="wraper">
+                        <div class="art-content" style="">
+                            <header><h2>Что это?</h2></header>
+                            <p>Nixie Clock&nbsp;&mdash; мультиплатформенное приложение, отображающее часы в&nbsp;виде <a href="http://ru.wikipedia.org/wiki/%C3%E0%E7%EE%F0%E0%E7%F0%FF%E4%ED%FB%E9_%E8%ED%E4%E8%EA%E0%F2%EE%F0">газоразрядных индикаторов</a>.</p>
+                            <p>Разработку приложения ведут 2&nbsp;программиста&nbsp;&mdash; Иванушкин Николай (Nim579) и&nbsp;Алексей Елин. Каждый разработчик отвечает за&nbsp;определенную платформу и&nbsp;использует свой собственный алгоритм счета времени.<br>
+                                Исторически сложилось, что было придумано 2&nbsp;разных алгоритма, и&nbsp;до&nbsp;сих пор идут споры о&nbsp;том какой из&nbsp;них лучше.
+                            </p>
+                            <p>Изначально, идея появилась у&nbsp;Алексея, далее к&nbsp;проекту присоединился Николай, который обработал изображения газоразрядных индикаторов Nixie Z560M.</p>
+                            <p>История появления идеи:</p>
+                            <p style="padding: 5px; font-size: 1.1em; color: #555;"><i>«Изначальная идея была проста&nbsp;&mdash; создать часы, показывающие время в&nbsp;любой системе счисления﻿.
         Чтобы программа сама по&nbsp;себе не&nbsp;была бесполезной, я&nbsp;решил сделать красивый хранитель экрана.
         Увидев старый амперметр, показывающий цифры, при помощи газоразрядного индикатора, ﻿я сразу понял, что это именно&nbsp;то, что нужно. Теперь, когда железного занавеса больше нет и&nbsp;для информации уже не&nbsp;существует чётких географических границ, газоразрядный индикатор смотрится особенно интересно и&nbsp;свежо, навевая атмосферу времён холодной войны, когда он&nbsp;широко использовался.<br>
         
@@ -175,33 +179,33 @@
         
         Позже, проект заинтересовал Николая Иванушкина. Он&nbsp;занялся обработкой исходных изображений для скринсейвера и&nbsp;создал прообраз страницы, на&nbsp;которой вы&nbsp;сейчас находитесь.
         Вскоре появилась версия под Android.»</i>
-        					</p>
-    					</div>
-    					<div class="art-img">
-    					    <img src="images/0s.png" alt="" width="300">
-    					</div>
-					</div>
-				</article>
-				<article id="android">
-					<div class="wraper">
-    					<div class="art-img">
-    					    <img src="images/android.png" alt="">
-    					</div>
-    					<div class="art-content">
-        					<header><h2>Android</h2></header>
-        					<p>Приложение отображает на экране часы в любой из 9-ти системе счисления (устанавливается в настройках).</p>
-        					<p>Разработчик&nbsp;&mdash; Иванушкин Николай.</p>
-        					<p>С&nbsp;помощью настроек можно заставить отображать часы в&nbsp;12&nbsp;и&nbsp;24&nbsp;часовом формате, а&nbsp;так&nbsp;же выводить их&nbsp;на&nbsp;полный экран.</p>
-        					<p>Возможно включить функцию отсчета времени до конца дня, или установленного времени. Возможно установить приложение на карту SD (android 2.2+).</p>
-        					<p>Часы замечательно отображаются на&nbsp;экране любого смартфона, а&nbsp;во&nbsp;время полноэкранного режима, экран не&nbsp;гаснет. Также возможна установка приложения на&nbsp;SDcard.</p>
-        					<span style="position: relative;"><img src="images/adr_nixie.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>&nbsp;<span style="position: relative;"><img src="images/adr_nixie2.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>&nbsp;<span style="position: relative;"><img src="images/adr_nixie3.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>
-        					<p><b>Изменения в&nbsp;последней версии:</b></p>
-        					<ul>
-        						<li>Улучшен интерфейс</li>
-        						<li>Приложение оптимизировано под планшеты</li>
-        					</ul>
-        					<p>Для работы требуется Android устройство с&nbsp;версией 2.1 и&nbsp;больше. Просто скачайте и&nbsp;установите.</p>
-    						<div class="bt-wrap">
+                            </p>
+                        </div>
+                        <div class="art-img">
+                            <img src="images/0s.png" alt="" width="300">
+                        </div>
+                    </div>
+                </article>
+                <article id="android">
+                    <div class="wraper">
+                        <div class="art-img">
+                            <img src="images/android.png" alt="">
+                        </div>
+                        <div class="art-content">
+                            <header><h2>Android</h2></header>
+                            <p>Приложение отображает на экране часы в любой из 9-ти системе счисления (устанавливается в настройках).</p>
+                            <p>Разработчик&nbsp;&mdash; Иванушкин Николай.</p>
+                            <p>С&nbsp;помощью настроек можно заставить отображать часы в&nbsp;12&nbsp;и&nbsp;24&nbsp;часовом формате, а&nbsp;так&nbsp;же выводить их&nbsp;на&nbsp;полный экран.</p>
+                            <p>Возможно включить функцию отсчета времени до конца дня, или установленного времени. Возможно установить приложение на карту SD (android 2.2+).</p>
+                            <p>Часы замечательно отображаются на&nbsp;экране любого смартфона, а&nbsp;во&nbsp;время полноэкранного режима, экран не&nbsp;гаснет. Также возможна установка приложения на&nbsp;SDcard.</p>
+                            <span style="position: relative;"><img src="images/adr_nixie.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>&nbsp;<span style="position: relative;"><img src="images/adr_nixie2.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>&nbsp;<span style="position: relative;"><img src="images/adr_nixie3.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>
+                            <p><b>Изменения в&nbsp;последней версии:</b></p>
+                            <ul>
+                                <li>Улучшен интерфейс</li>
+                                <li>Приложение оптимизировано под планшеты</li>
+                            </ul>
+                            <p>Для работы требуется Android устройство с&nbsp;версией 2.1 и&nbsp;больше. Просто скачайте и&nbsp;установите.</p>
+                            <div class="bt-wrap">
                                 <a href="https://market.android.com/details?id=ru.nim579.nixieclock" class="dl_butt">
                                     <img src="images/adr_l.png" height="60" alt="">
                                     <div>
@@ -214,59 +218,56 @@
                             <div class="bt-wrap">
                                 <img src="images/qr.png" alt="">
                             </div>
-    					</div>
-					</div>
-				</article>
-				<article id="win">
-					<div class="wraper">
-    					<div class="art-content" id="cont-t">
-        					<header><h2>Windows</h2></header>
-        					<p>Приложение скринсейвер.</p>
-        					<p>Разработчик&nbsp;&mdash; Алексей Елин.</p>
-        					<p>Приложение отображает на экране часы в виде газоразрядных индикаторов. С помощью настроек можно выбрать одну из 9-ти (2-10) систем счисления, в которых будет отображаться время, 12/24 формат времени, чувствительность мыши и звук. Приложение можно установить как заставку, или запускать вручную. При зажатом Ctrl заставка становится прозрачной, так можно увидеть что изменилось на рабочем столе. Отпустив Ctrl заставка вернется.</p>
-        					<p>Часы прекрасно адаптированы ко&nbsp;всем разрешениям мониторов, для этого была применена сложная технология собственного производства.</p>
-        					<p>Приложение написано на&nbsp;Visual Basic.NET и&nbsp;требует NET.Framework 2.0 и&nbsp;выше.</p>
-        					<span style="position: relative;"><img src="images/win_nixie.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>
-        					<p><b>Изменения в&nbsp;последней версии:</b></p>
-        					<ul>
-        						<li>Добавлена прозрачность при нажатии на Ctrl</li>
-        						<li>Модернизирован дизайн (уменьшены изображения, в 10-ой системе оттабулированы разряды)</li>
-        						<li>Добавлен быстрый выход (без плавного исчезновения), можно отключить в настройнах</li>
-        						<li>Добавлена настройка 12/24 формата времени</li>
-        					</ul>
-        					<p>Приложение поставляется в самораспаковывающемся архиве, и устанавливается в папку Windows. Таким образом, в настройках заставок, оно появится в списке заставок. А также на рабочий стол выносится ярлык.</p>
-        
-        					<a href="http://nim579.ru/load/0-0-0-12-20" class="dl_butt blue">
-        						<img src="images/win_l.png" height="60" alt="">
-        						<div>
-        						    <h3>Скачать</h3>
+                        </div>
+                    </div>
+                </article>
+                <article id="win">
+                    <div class="wraper">
+                        <div class="art-content" id="cont-t">
+                            <header><h2>Windows</h2></header>
+                            <p>Приложение скринсейвер.</p>
+                            <p>Разработчик&nbsp;&mdash; Алексей Елин.</p>
+                            <p>Приложение отображает на экране часы в виде газоразрядных индикаторов. С помощью настроек можно выбрать одну из 9-ти (2-10) систем счисления, в которых будет отображаться время, 12/24 формат времени, чувствительность мыши и звук. Приложение можно установить как заставку, или запускать вручную. При зажатом Ctrl заставка становится прозрачной, так можно увидеть что изменилось на рабочем столе. Отпустив Ctrl заставка вернется.</p>
+                            <p>Часы прекрасно адаптированы ко&nbsp;всем разрешениям мониторов, для этого была применена сложная технология собственного производства.</p>
+                            <p>Приложение написано на&nbsp;Visual Basic.NET и&nbsp;требует NET.Framework 2.0 и&nbsp;выше.</p>
+                            <span style="position: relative;"><img src="images/win_nixie.jpg" alt="" width="80" class="light" style="cursor: pointer;"></span>
+                            <p><b>Изменения в&nbsp;последней версии:</b></p>
+                            <ul>
+                                <li>Добавлена прозрачность при нажатии на Ctrl</li>
+                                <li>Модернизирован дизайн (уменьшены изображения, в 10-ой системе оттабулированы разряды)</li>
+                                <li>Добавлен быстрый выход (без плавного исчезновения), можно отключить в настройнах</li>
+                                <li>Добавлена настройка 12/24 формата времени</li>
+                            </ul>
+                            <p>Приложение поставляется в самораспаковывающемся архиве, и устанавливается в папку Windows. Таким образом, в настройках заставок, оно появится в списке заставок. А также на рабочий стол выносится ярлык.</p>
+
+                            <a href="http://nim579.ru/load/0-0-0-12-20" class="dl_butt blue">
+                                <img src="images/win_l.png" height="60" alt="">
+                                <div>
+                                    <h3>Скачать</h3>
                                     <i>Windows (2.5, 3.09 Мб)</i>
-        						</div>
-        					</a>
-    					</div>
-					    <div class="art-img" id="img-t">
-					        <img src="images/win.png" alt="">
-					    </div>
-					</div>
-				</article>
-			</div>
-		</article>
-		<!-- adv -->
-        <div style="text-align: center;"><script type="text/javascript" src="http://nim579.ru/rtr/5-3"></script></div>
-        <!-- /adv -->
-		<footer>
-			<div class="footer">
-				<div class="foo-img">
-				    <a href="http://nim579.ru/"><img src="//nim579.ru/images/nim579studio.png" alt=""></a>
-				</div>
-				<div class="foo-text">
-				    <p>&larr; <a href="http://nim579.ru">Вернуться</a> на сайт</p>
-				    <p>По вопросам и предложениям обращаться к Иванушкину Николаю (nim@nim579.ru) или Алексею Елину (alexey.elin@gmail.com).</p>
-				    <p>Nim579 & Colonel White © 2011&ndash;2012</p>
-				</div>
-			</div>
-		</footer>
-		
+                                </div>
+                            </a>
+                        </div>
+                        <div class="art-img" id="img-t">
+                            <img src="images/win.png" alt="">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </article>
+        <footer>
+            <div class="footer">
+                <div class="foo-img">
+                    <a href="http://nim579.ru/"><img src="//nim579.ru/images/nim579studio.png" alt=""></a>
+                </div>
+                <div class="foo-text">
+                    <p>&larr; <a href="http://nim579.ru">Вернуться</a> на сайт</p>
+                    <p>По вопросам и предложениям обращаться к Иванушкину Николаю (nim@nim579.ru) или Алексею Елину (alexey.elin@gmail.com).</p>
+                    <p>Nim579 & Colonel White © 2011&ndash;2012</p>
+                </div>
+            </div>
+        </footer>
+        
 <!-- Yandex.Metrika counter -->
 <div style="display:none;"><script type="text/javascript">
 (function(w, c) {
@@ -283,5 +284,5 @@
 <!-- /Yandex.Metrika counter -->
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 
-	</body>
+    </body>
 </html>
